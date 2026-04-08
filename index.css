@@ -1,0 +1,181 @@
+/* ============================================================
+   AQUANOVA v12.1 — Design Temático: Hydro-Dynamics
+   Paleta: Deep Ocean + Crystal Aqua + Mint Hygiene
+   Textura: Hydro-Grid + Dynamic Bubbles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── DARK MODE (Midnight Ocean) ────────────────────────── */
+:root {
+  --bg-base:     #040c18; 
+  --bg-elevated: #0a1628;
+  --bg-surface:  #0f2038;
+  --bg-raised:   #1a2e4c;
+  --bg-hover:    #1a2e4c;
+
+  --txt-primary:   #f0f9ff;
+  --txt-secondary: #bae6fd;
+  --txt-muted:     #38bdf8;
+  --txt-inverse:   #040c18;
+
+  --agua:       #22d3ee; 
+  --agua-dim:   rgba(34,211,238,0.1);
+  --agua-glow:  rgba(34,211,238,0.2);
+  --agua-brd:   rgba(34,211,238,0.35);
+
+  --success:    #4ade80; 
+  --success-dim:rgba(74,222,128,0.1);
+  --success-brd:rgba(74,222,128,0.3);
+
+  --danger:     #fb7185; 
+  --danger-dim: rgba(251,113,133,0.1);
+  --danger-brd: rgba(251,113,133,0.3);
+
+  --ambar:      #fbbf24;
+
+  --brd:        rgba(34,211,238,0.15);
+  --brd-med:    rgba(34,211,238,0.25);
+  --brd-strong: rgba(34,211,238,0.4);
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:  0 0 30px rgba(34,211,238,0.05);
+  --shadow-lg:  0 0 60px rgba(34,211,238,0.08);
+
+  --sidebar-bg: #040c18;
+  --sidebar-w:  240px;
+
+  /* Glass card */
+  --bg-glass:      rgba(15,32,56,0.4);
+  --glass-inset:   inset 0 1px 1px rgba(255,255,255,0.05);
+}
+
+/* ── LIGHT MODE (Linen & Tide) ─────────────────────────── */
+/*
+   Concepto: Blanco lino cálido + cerulean profundo.
+   Base warm-stone rompe el patrón genérico sky-blue.
+   Tipografía en charcoal cálido — no texto azul.
+   Sombras en capas con undertone cálido.
+   Sidebar slate-teal con identidad propia.
+*/
+[data-theme="light"] {
+  /* Fondos — lino cálido, no sky-blue */
+  --bg-base:     #F5F3EF;
+  --bg-elevated: #FEFDFB;
+  --bg-surface:  #FFFFFF;
+  --bg-raised:   #EAE7E1;
+  --bg-hover:    #E2DFD8;
+
+  /* Texto — charcoal cálido, alto contraste */
+  --txt-primary:   #1C1917;
+  --txt-secondary: #44403C;
+  --txt-muted:     #78716C;
+  --txt-inverse:   #FFFFFF;
+
+  /* Acento — cerulean profundo, único */
+  --agua:       #006E96;
+  --agua-dim:   rgba(0,110,150,0.07);
+  --agua-glow:  rgba(0,110,150,0.13);
+  --agua-brd:   rgba(0,110,150,0.22);
+
+  /* Estados semánticos completos */
+  --success:     #0A6E45;
+  --success-dim: rgba(10,110,69,0.08);
+  --success-brd: rgba(10,110,69,0.2);
+
+  --danger:      #B91C1C;
+  --danger-dim:  rgba(185,28,28,0.07);
+  --danger-brd:  rgba(185,28,28,0.18);
+
+  --ambar:       #92400E;
+
+  /* Bordes — warm gray, no cyan */
+  --brd:        rgba(28,25,23,0.08);
+  --brd-med:    rgba(28,25,23,0.14);
+  --brd-strong: rgba(0,110,150,0.32);
+
+  /* Sombras en capas — undertone cálido */
+  --shadow-sm:  0 1px 3px rgba(28,25,23,0.06), 0 1px 2px rgba(28,25,23,0.04);
+  --shadow-md:  0 4px 16px rgba(28,25,23,0.07), 0 2px 6px rgba(28,25,23,0.04);
+  --shadow-lg:  0 12px 40px rgba(28,25,23,0.09), 0 4px 12px rgba(28,25,23,0.05);
+
+  /* Sidebar — slate-teal, identidad propia */
+  --sidebar-bg: #182330;
+
+  /* Extras — focus accesible, selección de texto */
+  --focus-ring:    rgba(0,110,150,0.38);
+  --selection-bg:  rgba(0,110,150,0.14);
+
+  /* Glass card — blanco cálido semitransparente */
+  --bg-glass:    rgba(255,255,255,0.82);
+  --glass-inset: inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+/* Resplandor en modo claro — intensidad reducida */
+[data-theme="light"] body::after {
+  opacity: 0.6;
+}
+
+/* Selección de texto */
+[data-theme="light"] ::selection {
+  background: var(--selection-bg);
+  color: var(--txt-primary);
+}
+
+/* Focus ring global */
+[data-theme="light"] :focus-visible {
+  outline: 2px solid var(--agua);
+  outline-offset: 2px;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--txt-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+  font-size: 14px;
+}
+
+/* Textura — dot grid sutil */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle, var(--brd) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
+  opacity: 0.55;
+}
+
+/* Resplandor ambiental — color de marca */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 80% 10%, var(--agua-glow) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 90%, var(--agua-dim)  0%, transparent 70%);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--brd-strong); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--agua); }
+
+/* ── Animaciones ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%, 100% { opacity: .15; transform: scale(1); }
+  50%       { opacity: .3; transform: scale(1.08); }
+}
+
